@@ -23,15 +23,23 @@ public class Test {
       GHRepository repo = hub.getRepository("preym/OAuth");
       GHOrganization organization = hub.getOrganization("ehc");
       Map<String, GHTeam> teams = organization.getTeams();
-      Map<String, GHBranch> branches = repo.getBranches();
-      Map<String, GHRepository> repositories = organization.getRepositories();
-      // Map map = new HashMap();
       Iterator entries = teams.entrySet().iterator();
       while (entries.hasNext()) {
         Map.Entry entry = (Map.Entry) entries.next();
         String key = (String) entry.getKey();
         GHTeam value = (GHTeam) entry.getValue();
         Set<GHUser> users = value.getMembers();
+        System.out.println("Key = " + key + ", Value = " + value);
+        System.out.println("Developers/Team Members:" + users.toString());
+      }
+      Map<String, GHBranch> branches = repo.getBranches();
+      Map<String, GHRepository> repositories = organization.getRepositories();
+      Iterator entries1 = repositories.entrySet().iterator();
+      while (entries.hasNext()) {
+        Map.Entry entry = (Map.Entry) entries.next();
+        String key = (String) entry.getKey();
+        GHRepository value = (GHRepository) entry.getValue();
+        Map<String, GHBranch> users = value.getBranches();
         System.out.println("Key = " + key + ", Value = " + value);
         System.out.println("Developers/Team Members:" + users.toString());
       }
