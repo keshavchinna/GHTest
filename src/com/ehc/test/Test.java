@@ -58,9 +58,10 @@ public class Test {
                     }
 
                     GHCommit commit = repositoryEntry.getValue().getCommit(sha1);
-
+                    List<GHCommit> commits = commit.getParents();
+                    System.out.println("ParentCommits: " + commits.toString());
                     System.out.println("commit: " + commit.toString());
-                    System.out.println("author: " + commit.getAuthor().toString());
+                    System.out.println("author: " + commit.getAuthor().getName());
                     if (commit.getCommitter().toString() != null)
                         System.out.println("Committer: " + commit.getCommitter().toString());
                 }
